@@ -41,7 +41,7 @@
        character(len=555) :: spc2file, spc3file, ioiofile
        character(len=555) :: un_all, un_end, un_prevend
        character(len=555) :: unit_all, unit_end, unit_prevend
-       character(len=555) :: spectrumfile
+       character(len=555) :: spectrumfile, unit_res
        CHARACTER(len=555) :: cwd
        integer(wp) :: dumint, dumintminus
        integer(wp) , parameter :: spectrumunit=5748
@@ -181,11 +181,17 @@
        real (wp) :: eta0, alet, beet, rho0, gaet
        real (wp) :: mue, almu, bemu, kappa
        integer :: iacc, iband1, inopert
+       logical :: eta_var,cos_viscos
+       real(wp) :: eta_growth_rate,eta_var_start_time
 
 !#! Marco, importantissimi per output, non cambiare :)
        integer(wp) , parameter :: ibein = 03
        integer(wp) , parameter :: ibaus = 04 
        integer(wp) , parameter :: ibout1 = 02
+
+!@! Nicholas 15-04-2021, aggiungo una variabile per scrivere il file contente resistività e viscosità
+	integer(wp) , parameter :: iresvis = 2455
+
 
 !#! Marco, other declarations
        integer(wp) :: iaus, ig
@@ -209,6 +215,8 @@
        real(wp) :: fsusi,ybtot,yvtot,ybf,yvf,torf
        integer(wp) :: i2d, inoconv, ivac, ippcd
        real(wp) :: lambda
+!#! Marco, 18-06-2020 per resistività variabile
+       real(wp) :: en_eta_var
 
        contains 
        subroutine alloc_arrays(amy,aiz,alx)
@@ -569,6 +577,14 @@
         almu = 1.d0
         bemu = 0.d0
         lambda = 0.d0
+!#! Marco, 18-06-2020. Inizializzo eta_var a false
+        eta_var = .false.
+        eta_growth_rate = 1.d-6
+        eta_var_start_time = 0.
+!#! Nicholas, 05-03-2022, viscosità modulata con il coseno -->
+!cos_viscos=true
+        cos_viscos = .false.
+
         iband = .false. ! inizia la simulazione
 !        iband = .true. ! continua la simulazione
         iband1 = 0

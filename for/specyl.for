@@ -36,7 +36,10 @@
      $   ,n0,n1,n2,n3,n4,n5,n6,n7,n8,n9,n10
      $   ,n11,n12,n13,n14,n15,n16,n17,n18,n19,n20
      $   ,tau_growth,tau_decrease,time_passage
-     $   ,mp_exp,mp_tanh,time_medium,dump_v
+     $   ,mp_exp,mp_tanh,time_medium,eta_var
+!#! aggiunta per eta_var in time 19/04/2021
+     $   ,eta_var_start_time,eta_growth_rate
+     $   ,cos_viscos
 
 !#! preliminary I-O operations
       call getcwd(prefix)
@@ -45,6 +48,10 @@
      .           //"specyl_"//trim(string)//"_all.dat")
       unit_end = trim(trim(prefix)//"/dat/"
      .           //"specyl_"//trim(string)//"_end.dat")
+!@! Nicholas 15/04/2021 nuovo nome file res_visc
+      unit_res = trim(trim(prefix)//"/dat/"
+     .           //"specyl_"//trim(string)//"_res_visc.dat")
+
 
 !#! Marco, load default values of the spc2 namelist
       call default_spc2 
@@ -739,6 +746,55 @@ c..... bza definizione:
        J = JANZ(MPLO(2),NPLO(2)) 
        VRALT = VR(IG,J)
        VZALT = VZ(IG,J)
+
+!#! Marco, 18-06-2020, resistività eta0 variabile
+        if (it .gt. 1) then
+        if (eta_var) then
+!@! Nicholas, 23-06-2021 torno ad eta0 e nu variabili, dipendenti dall'energia del modo m=1, n=-7 eta = 2.e-7 W_m^(-0.5) 
+        eta0 = 1.d-8*en_eta_var**(-0.5)
+        mue = 1.d-6*en_eta_var**(-0.5)
+!@! Nicholas, 14-04-2021 resistività eta0 variabile con dipendenza esponenziale nel tempo, Prandtl = 50 (Prova_5)
+!#! 19 aprile 2021 
+!         eta0 = 1.d-6*10.**(2.d-7*(tot_it - 5.3d6)) 
+!	 mue = 5.d-5*10.**(2.d-7*(tot_it - 5.3d6))
+         e0 = alpha * eta0
+!         if ( mod(tot_it,100) .eq. 0) then
+!          write(*,*) 'E0_check_before_faraday',e0
+!         endif
+!        eta0 = eta0*10.**(eta_growth_rate*(tot_it - eta_var_start_time)) 
+!	 mue = mue*10.**(eta_growth_rate*(tot_it - eta_var_start_time))
+!@! Nicholas, 03-02-2021 resistività eta0 variabile con dipendenza esponenziale nel tempo, Prandtl = 50 (Prova_1)
+!        eta0 = 1.d-6*10.**(4.d-6*it) 
+!	 mue = 5.d-5*10.**(4.d-6*it)
+!@! Nicholas, 02-02-2021 resistività eta0 variabile con dipendenza legge di potenza nel tempo, Prandtl = 50 (Prova_0)
+!	 eta0 = 1.d-6*it**(0.667)
+!	 mue = 5.d-5*it**(0.667)
+!@! Nicholas, resistività eta0 variabile valida per il modo m=1, n=-7 (terzo tentativo)
+!         eta0 = 5.d-8*en_eta_var**(-0.5)
+!         mue = 5.d-8*en_eta_var**(-0.5)
+!@! Nicholas, 06-08-2020 resistività eta0 variabile valida per il modo m=1, n=-7 (secondo tentativo)
+! 	  eta0 = 1.d-7*en_eta_var**(-0.5)
+!         mue = 1.d-7*en_eta_var**(-0.5)
+!@! Nicholas, 29-07-2020 resistività eta0 variabile valida per il modo m=1, n=-7 (primo tentativo)
+!         eta0 = 1.5d-6*en_eta_var**(-0.5)
+!         mue = 1.5d-6*en_eta_var**(-0.5)
+!@! Nicholas, 06-07-2020, resistività eta0 variabile valida per il modo m=0, n=1
+!         eta0 = 2.5d-4*en_eta_var**0.5
+!         mue = 2.5d-4*en_eta_var**0.5
+!         write(*,*) 'inside if',it,eta_var,en_eta_var, eta0,mue
+         call dissipation_profiles(mu1,mu2,etaa,eta2,kap)
+        endif
+        endif
+
+!@! Nicholas 15-04-2021, provo a scrivere il file contente tempo, resistività e viscosità 
+
+        open(unit=iresvis,file=trim(unit_res),action='write'
+     .        ,form='unformatted',position='append')
+         WRITE(IRESVIS)  ZEIT,ETA0,MUE 	
+        close(unit=iresvis)
+
+
+
 
 !        write(*,*),'before_first_faraday ,it= ',it
 !     .             ,'bzn0=',bzn(-1:1,j0),' bz0=',bz(-1:1,j0)
@@ -2353,6 +2409,7 @@ C......................................... GROWTH RATE
 !       WRITE(6,*) '   0.5*(REAL(BT(LX-1,J0))+REAL(BT(LX,J0))) = ',
 !     .        0.5*(REAL(BT(LX-1,J0))+REAL(BT(LX,J0)))
       WRITE(6,*) '    flusso toroidale= ', TORFLX,'  ftor=',FTOR
+      WRITE(6,*) '    eta0, mue= ', eta0,mue
       WRITE(6,*) '   TH =',YTH, '   F = ', YF(ITP)
       WRITE(6,*) '    ITP=', ITP
       WRITE(6,*) '    time=', it*dt
@@ -2446,6 +2503,32 @@ C........................................ WRITE ON DISK
  
 
  117   CONTINUE                                                         
+
+!#! Marco, 18-06-2020 per resistività variabile
+        en_eta_var=0.0
+!#! Marco, 18-06-2020 scelgo modo
+        j = 74
+         do ix=1,lx-1                                            
+!          ybr1= ( real(br(ix,j))**2. + 
+!     .            real(bt(ix,j))**2. + 
+!     .            real(bz(ix,j))**2. +
+!     .            aimag(br(ix,j))**2. +   
+!     .            aimag(bt(ix,j))**2. + 
+!     .            aimag(bz(ix,j))**2.) / 2. 
+          ybr2= ( 
+     .         (0.5*(real(br(ix,j)) +real(br(ix+1,j))))**2. + 
+     .         (0.5*(real(bt(ix,j)) +real(bt(ix+1,j))))**2. + 
+     .         (0.5*(real(bz(ix,j)) +real(bz(ix+1,j))))**2. + 
+     .         (0.5*(aimag(br(ix,j)) +aimag(br(ix+1,j))))**2. + 
+     .         (0.5*(aimag(bt(ix,j)) +aimag(bt(ix+1,j))))**2. + 
+     .         (0.5*(aimag(bz(ix,j)) +aimag(bz(ix+1,j))))**2.
+     .                 )/2.!(questo /2 è l'int cos^2)                
+          en_eta_var = en_eta_var + ybr2*x2(ix)/zdr
+         enddo
+!         write(*,*) ' en_eta_var:',it,en_eta_var
+
+
+
         tot_it = tot_it + 1
    50 CONTINUE                                                          
 

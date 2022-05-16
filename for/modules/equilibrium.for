@@ -168,12 +168,30 @@
       !            DO 366 IX=1,LX-1
       ! daniele, 20/06/2008
       ! inserisco parametro lambda per fare viscosità decrescente
-             DO 366 IX=0,LX
+
+
+      ! Nicholas 01/03/2022: ripristino viscosità con il coseno  
+      ! Nicholas 07/07/2021: sostituisco temporaneamente il calcolo della
+      ! viscosità, per aggiungere il coseno avere viscosità tendente a
+      ! zero nell'edge.
+      ! Nicholas 08/07/2020: conclusa la simulazione, ripristino la
+      ! versione precedente.
+      
+        if (cos_viscos) then
+              do ix=0,lx 
                 MMU1(IX) = MUE*
-     .              (1. + (ALMU-1.)*X(IX)**BEMU)**lambda
+     .             (1. + (ALMU-1.)*X(IX)**BEMU*cos(1.6*X(IX)))
                 MMU2(IX) = MUE*
-     .             (1. + (ALMU-1.)*X2(IX)**BEMU)**lambda
-366           CONTINUE
+     .             (1. + (ALMU-1.)*X2(IX)**BEMU*cos(1.6*X2(IX)))
+              enddo
+        else
+             do ix=0,lx
+               MMU1(IX) = MUE*
+     .            (1. + (ALMU-1.)*X(IX)**BEMU)**lambda
+               MMU2(IX) = MUE*
+     .            (1. + (ALMU-1.)*X2(IX)**BEMU)**lambda
+             enddo
+        endif
              do ix=0,lx
       ! daniele,17/02/2009
       ! siccome uso questo per fare anche il tokamak, avrei bisogno di gaet
