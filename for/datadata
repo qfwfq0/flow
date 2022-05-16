@@ -1,0 +1,9 @@
+
+
+
+                                           
+#! Marco, other declarations
+      integer(wp) :: iaus, ig
+
+
+      end module defs

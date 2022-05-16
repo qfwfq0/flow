@@ -1,0 +1,10 @@
+ &spc2
+        lx = 100
+        my = 10 
+        iz = 10 
+        i2d = 1 
+        n2d = -10 
+        m2d = 1 
+        fasi_sganciate = t
+        irrot = t
+ /

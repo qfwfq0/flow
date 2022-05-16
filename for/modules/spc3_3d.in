@@ -1,0 +1,76 @@
+ &spc3
+!#! Marco, scelta spettri
+        mm = 0,1,2,3,4
+        nanf = -25,-55,-50,-60,-70
+        nz = 25,65,45,45,45
+        nzcon = 26,65,45,45,45
+        n0 = 25
+        n1 = 65
+        n2 = 45
+        n3 = 45
+        n4 = 45
+        n5 = 0
+        n6 = 0
+        n7 = 0
+        n8 = 0
+        n9 = 0
+        n10 = 0
+
+!#! Marco, scelta MPs
+        qmp = 0
+        br_pert_freq = 0.d0
+        mp_cmplx = (0.d0,0.d0)
+        mp_perc = 0.d0
+        ph_mp = 0.d0
+        m_mp = 0
+        n_mp = 0
+        m_mpold = 0 
+        n_mpold = 0 
+        ampold = 0.d0
+        pitol = 1.e-4
+
+!#! Marco, momentum source
+        momsour_shape = 0
+        m0_momsour = 0.d0 0.d0 0.d0
+        gauss_maxvz0 = 0.0
+        gauss_fwhm = 0.0
+        gauss_center = 0.0
+        
+!#! Marco, dump velocity (if .eq. 1 do nothing)
+        dump_v = 1.
+
+!#! Marco, equilibrium features
+        ipr = -2
+        chi = 0.d0
+        beta0 = 0.d0
+        theta0 = 1.d0
+        alpha = 4.2d0
+        q01 = 0.d0
+        aa1 = 1.8748d0
+        bb1 = 0.83232d0
+        rr = 4.d0
+
+!#! Marco, simulation time
+        dt = 0.01d0
+        itend = 10000
+        ib = 100
+        itor = 1000000
+
+!#! Marco, dissipation parameters
+        eta0 = 1.e-6
+        alet = 21.d0
+        beet = 10.d0
+        rho0 = 1.d0
+        gaet = 1.d0
+        mue = 1.e-2
+        almu = 1.d0
+        bemu = 0.d0
+        lambda = 0.d0
+
+!#! Marco
+        iband = .false. ! inizia la simulazione
+!        iband = .true. ! continua la simulazione
+        iband1 = 0
+        inopert = 0 ! perturba la simulazione
+!        inopert = 1 ! non perturba la simulazione
+ /

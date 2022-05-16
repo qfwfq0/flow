@@ -1,0 +1,46 @@
+# In the following lines write the times that you need to analyze
+TIME
+30
+40
+50
+$
+# Define the helicity, useful for computation of the helical-related quantities
+HELICITY
+-9
+$
+# Define the various quantities
+QUANTITIES
+# lines means actually unavailable quantities/comment
+! [bz,bt,br]
+! [vz,vt,vr]
+! [az,at]
+! [jz,jt,jr]
+! [chi]
+! [taujb]
+! [flowxy]
+# vz,vt,vr,
+# mu,psi,divb,divv,jeli,
+# dinz,dint,dinr,
+# e0z,e0t,e0r,
+# eindz,eindt,eindr,
+# iez,iet,ier,
+# gradphiz,gradphit,gradphir,
+# phi,rhoc,psij,
+# b00z,b00t,b00r,
+# j00z,j00t,j00r,
+# v00z,v00t,v00r,
+# eta,nu,phim0,
+# bm0z,bm0t,bm0r,
+# gradphim0z,gradphim0t,gradphim0r,
+# az,at
+$
+QUANTITIES TO BE COMPUTED
+# 1: I want this quantity; 0: I don't want this quantity
+0
+0
+0
+0
+0
+1
+1
+$

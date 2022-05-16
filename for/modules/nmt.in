@@ -1,0 +1,11 @@
+ &nmt
+        iitp = 99
+        inteli = 0
+        lth = 256
+        lphi = 1024
+	shsh = f
+!        lth = 64
+!        lphi = 128
+        mode_dump = f
+        fact = 1.
+ /

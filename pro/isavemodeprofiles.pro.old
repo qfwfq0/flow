@@ -1,0 +1,177 @@
+function janz,m,n,my,mm,nanf,nz
+    j = 0
+    if (m eq 0 and n eq 0) then return,j
+    for mi=0,m-1 do begin
+        j = j + nz[mi]
+    endfor
+    j =  j + 1 + n - nanf[m]
+    return,j
+end
+
+function mnum,j
+    return,j
+end
+
+function nnum,j
+    return,-8.*j
+end
+
+pro isavemodeprofiles,path
+	
+    path = path+'/'
+    RR = 4
+
+    restore,path+'spectrum.sav'
+    jmin = 0
+    jmax = 1
+;    jmax = 10
+;    jmax = 136
+    jmax = 225
+    print,'estremi j che salvo: ',jmin,jmax
+    print,'(ricorda che gli estremi j vanno cambiati a mano!)'
+
+; scopro il numero di sezioni
+    nsections = 1
+
+    fileformat = '("specyl_",I0,"_all.sav")'
+    while (file_test(path+string(nsections,format=fileformat))) do begin
+        print,'guardo se esiste la sezione ',nsections
+        print,'file: ',path+string(nsections,format=fileformat)
+        print,'risultato: ',file_test(path+string(nsections,format=fileformat))
+        nsections = nsections + 1
+    endwhile
+    print,'nsections',nsections
+    nsections = nsections - 1
+    lsections = intarr(nsections)
+    print,'numero sezioni: ', nsections
+
+; lettura dal file all
+
+    fileformat1 = '("specyl_",I0,"_all.sav")'
+    nt = ulonarr(nsections)
+    itpdimension = ulonarr(nsections)
+
+;#; main cycle on the sections
+    for i = 1,nsections do begin
+        file = path+string(i,format=fileformat)
+        restore,file
+;#; check wheter the file specyl_?_all.sav is at the correct latest version;
+;#; if negative call iread_sc.pro
+        itpdimension(i) = n_elements(bz[*,0,0])
+;#; reading the for/settings.for file
+
+        dr = 1.d/lx
+        pror1 = dindgen(lx+1)*dr
+        pror2 = (-0.5 + dindgen(lx+2))*dr
+        nt[i-1] = n_elements(t)
+        print,file,nt
+        help,bz
+        help,bt
+        help,br
+
+        rpbz = reform(2.*real_part(bz[0:nt[i-1]-1,*,jmin:jmax]))
+        rpbt = reform(2.*real_part(bt[0:nt[i-1]-1,*,jmin:jmax]))
+        rpbr = reform(2.*real_part(br[0:nt[i-1]-1,*,jmin:jmax]))
+        ipbz = reform(2.*imaginary(bz[0:nt[i-1]-1,*,jmin:jmax]))
+        ipbt = reform(2.*imaginary(bt[0:nt[i-1]-1,*,jmin:jmax]))
+        ipbr = reform(2.*imaginary(br[0:nt[i-1]-1,*,jmin:jmax]))
+        help,vz
+        help,vt
+        help,vr
+        rpvz = reform(2.*real_part(vz[0:nt[i-1]-1,*,jmin:jmax]))
+        rpvt = reform(2.*real_part(vt[0:nt[i-1]-1,*,jmin:jmax]))
+        rpvr = reform(2.*real_part(vr[0:nt[i-1]-1,*,jmin:jmax]))
+        ipvz = reform(2.*imaginary(vz[0:nt[i-1]-1,*,jmin:jmax]))
+        ipvt = reform(2.*imaginary(vt[0:nt[i-1]-1,*,jmin:jmax]))
+        ipvr = reform(2.*imaginary(vr[0:nt[i-1]-1,*,jmin:jmax]))
+        help,rpbz
+        help,rpbt
+        help,rpbr
+
+;#; I remove the 2. factor from the equilibrium harmonic
+        if (jmin eq 0) then begin
+            rpbz[*,*,0] = 0.5*rpbz[*,*,0]
+            rpbt[*,*,0] = 0.5*rpbt[*,*,0]
+            rpbr[*,*,0] = 0.5*rpbr[*,*,0]
+            ipbz[*,*,0] = 0.5*ipbz[*,*,0]
+            ipbt[*,*,0] = 0.5*ipbt[*,*,0]
+            ipbr[*,*,0] = 0.5*ipbr[*,*,0]
+            rpvz[*,*,0] = 0.5*rpvz[*,*,0]
+            rpvt[*,*,0] = 0.5*rpvt[*,*,0]
+            rpvr[*,*,0] = 0.5*rpvr[*,*,0]
+            ipvz[*,*,0] = 0.5*ipvz[*,*,0]
+            ipvt[*,*,0] = 0.5*ipvt[*,*,0]
+            ipvr[*,*,0] = 0.5*ipvr[*,*,0]
+        endif
+
+        if (i eq 1) then begin
+            rpdbz = temporary(rpbz)
+            ipdbz = temporary(ipbz)
+            rpdbt = temporary(rpbt)
+            ipdbt = temporary(ipbt)
+            rpdbr = temporary(rpbr)
+            ipdbr = temporary(ipbr)
+            rpdvz = temporary(rpvz)
+            ipdvz = temporary(ipvz)
+            rpdvt = temporary(rpvt)
+            ipdvt = temporary(ipvt)
+            rpdvr = temporary(rpvr)
+            ipdvr = temporary(ipvr)
+; commentare perchè così prendo il tempo da scel che è giusto
+; anche quando ho più sezioni
+            prot = temporary(t)
+
+        endif else begin
+
+            rpdbz=[rpdbz,temporary(rpbz[1:*,*,*])]
+            ipdbz=[ipdbz,temporary(ipbz[1:*,*,*])]
+            rpdbt=[rpdbt,temporary(rpbt[1:*,*,*])]
+            ipdbt=[ipdbt,temporary(ipbt[1:*,*,*])]
+            rpdbr=[rpdbr,temporary(rpbr[1:*,*,*])]
+            ipdbr=[ipdbr,temporary(ipbr[1:*,*,*])]
+            rpdvz=[rpdvz,temporary(rpvz[1:*,*,*])]
+            ipdvz=[ipdvz,temporary(ipvz[1:*,*,*])]
+            rpdvt=[rpdvt,temporary(rpvt[1:*,*,*])]
+            ipdvt=[ipdvt,temporary(ipvt[1:*,*,*])]
+            rpdvr=[rpdvr,temporary(rpvr[1:*,*,*])]
+            ipdvr=[ipdvr,temporary(ipvr[1:*,*,*])]
+            prot = [prot,t[1:*]]
+
+        endelse
+
+        bz = 0
+        bt = 0
+        br = 0
+        vz = 0
+        vt = 0
+        vr = 0
+    
+    endfor
+;        prodbz = make_array(2,n_elements(rpdbz[*,0,0]),n_elements(rpdbz[0,*,0]),n_elements(rpdbz[0,0,*]),/double,value=0.)
+;        prodbt = make_array(2,n_elements(rpdbt[*,0,0]),n_elements(rpdbt[0,*,0]),n_elements(rpdbt[0,0,*]),/double,value=0.)
+;        prodbr = make_array(2,n_elements(rpdbr[*,0,0]),n_elements(rpdbr[0,*,0]),n_elements(rpdbr[0,0,*]),/double,value=0.)
+;        prodvz = make_array(2,n_elements(rpdvz[*,0,0]),n_elements(rpdvz[0,*,0]),n_elements(rpdvz[0,0,*]),/double,value=0.)
+;        prodvt = make_array(2,n_elements(rpdvt[*,0,0]),n_elements(rpdvt[0,*,0]),n_elements(rpdvt[0,0,*]),/double,value=0.)
+;        prodvr = make_array(2,n_elements(rpdvr[*,0,0]),n_elements(rpdvr[0,*,0]),n_elements(rpdvr[0,0,*]),/double,value=0.)
+; calcoli
+        
+    ntp = n_elements(prot)
+    print,'ntp: ',ntp
+    print,min(prot),max(prot)
+
+   print,'Sto salvando il file.. attendere.. imodeprofiles'
+
+   save_file = path+'ibprofiles.sav'
+   save,prot,pror1,pror2,rpdbz,ipdbz,rpdbt,ipdbt,rpdbr,ipdbr,filename=save_file
+   save_file = path+'ivprofiles.sav'
+   save,prot,pror1,pror2,rpdvz,ipdvz,rpdvt,ipdvt,rpdvr,ipdvr,filename=save_file
+   
+   redgebr=reform(rpdbr[*,95:100,*])
+   redgebt=reform(rpdbt[*,95:100,*])
+   redgebz=reform(rpdbz[*,95:100,*])
+   iedgebr=reform(ipdbr[*,95:100,*])
+   iedgebt=reform(ipdbt[*,95:100,*])
+   iedgebz=reform(ipdbz[*,95:100,*])
+   save,filename=path+'ibfield_edge.sav',prot,pror1,pror2,redgebr,redgebt,redgebz,iedgebr,iedgebt,iedgebz
+
+end

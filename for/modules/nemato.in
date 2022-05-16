@@ -1,0 +1,45 @@
+ &lst
+	ilevel = 0
+
+	test   = f
+        contours = f
+
+	!Orbit integrator info
+	tmax   	= 20000.
+	dtime  	= .01
+	niter  	= 20
+	atol   	= 1d-10
+	rtol   	= 1d-8
+	solen  	= f
+	odeorder= 1
+	sporder = 3
+
+	!Surface of section info
+	ssorder= 2
+
+	lxss   = f
+	lyss   = t
+	lzss   = f
+	xsurf  = 0.5
+	ysurf  = 0.0
+	zsurf  = 0.0 
+
+	!Computational box (to define orbit initial points)
+	x0min  = .02d0
+	x0max  = .98d0
+
+	y0min  = .1d0
+	y0max  = 6.085d0
+
+	z0min  = .1d0
+	z0max  = 25.13d0
+
+	!Number of orbits
+	ninitx = 16
+!	ninity  = 8
+        ninitz  = 16
+
+	!Input file (if not specified in command line)
+        pixie3d_file='poinc_soloveev_k=1_t=4.1.bin'
+
+ /

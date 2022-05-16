@@ -1,0 +1,1000 @@
+  118  llt *gz
+  119  cd a
+  120  ls
+  121  cd archive/
+  122  ll
+  123  cd veranda/
+  124  ll
+  125  cd exp_data/
+  126  ll
+  127  cd ../../../
+  128  ll
+  129  ls
+  130  tar -tvf trancd ..
+  131  ls s300m30_momsour0/
+  132  cd s300m30_momsour2e-3/
+  133  idl
+  134  cd ..
+  135  idl
+  136  ssh ra25
+  137  exit
+  138  flw
+  139  make -f makefile SIM=archive/rfp/2d/theta16/momsour/h10/s300m30_momsour0/ 3D=0 begin
+  140  make -f makefile SIM=archive/rfp/2d/theta16/momsour/h10/s300m30_momsour0/ 3D=0 i_plot
+  141  c
+  142  make -f makefile SIM=archive/rfp/2d/theta16/momsour/h7/s300m30_momsour6e-3/ sc_outputs
+  143  Compilo specyl.for
+  144  sq
+  145  make -f makefile SIM=archive/rfp/2d/theta16/momsour/h7/s300m30_momsour6e-3/ sc_outputs
+  146  make -f makefile SIM=archive/rfp/2d/theta16/momsour/h7/s300m30_momsour6e-3/ sc_outputs
+  147  gvim for/specyl.for 
+  148  make -f makefile SIM=archive/rfp/2d/theta16/momsour/h7/s300m30_momsour6e-3/ sc_outputs
+  149  exit
+  150  cd s300m30_momsour0/
+  151  llt dat/
+  152  flwshw 
+  153  llt for/
+  154  cp -r for/5/ for/6
+  155  vim for/6/cyl1.inc.for 
+  156  vim settings.inc.mk 
+  157  llt dat/
+  158  llt log/
+  159  cat log/s300m30_momsour0_201701240958.log 
+  160  cd ..
+  161  cd s300m30_momsour4e-2/
+  162  flwshw 
+  163  cd ..
+  164  cd s300m30_momsour0/
+  165  llt dat/
+  166  cd ..
+  167  cd s300m30_momsour2e-3/
+  168  sq
+  169  c
+  170  cd ..
+  171  cd s300m30_momsour0/
+  172  llt dat/
+  173  cat log/s300m30_momsour0_201701240958.log 
+  174  vim for/settings.blc.for 
+  175  flwshw 
+  176  flwshw 
+  177  c
+  178  c
+  179  ls
+  180  meld fexit
+  181  exit
+  182  ls
+  183  cd archive/rfp/2d/theta16/momsour/
+  184  ll
+  185  cd h10/
+  186  ll
+  187  llt *pro
+  188  c
+  189  llt *pro
+  190  llt
+  191  cd s300m30_momsour0
+  192  llt
+  193  llt dat/
+  194  cd ..
+  195  llt
+  196  cd s300m300_momsour0
+  197  llt daa
+  198  llt da
+  199  llt dat/
+  200  cd ..
+  201  llt *pro
+  202  vim variaS_momsour0.pro 
+  203  llt
+  204  vim variaS_momsour0.pro 
+  205  llt *pro
+  206  vim variaS.pro 
+  207  c
+  208  llt
+  209  llt *sav
+  210  ls
+  211  cd s3000m30_momsour0/
+  212  llt
+  213  flwshw 
+  214  llt log/
+  215  llt dat/
+  216  llt log/
+  217  cat log/s3000m30_momsour0_201511171528.log 
+  218  llt for/
+  219  c
+  220  cd ..
+  221  c
+  222  ls -d s300m30*
+  223  ls
+  224  cd s300m30_momsour2e-3/
+  225  ll
+  226  flwshw 
+  227  flwshw 
+  228  flwshw 
+  229  llt dat/
+  230  llt dat/itp/0/
+  231  ggv dat/itp/0/plot_m0_n0_b.eps&
+  232  ggv dat/itp/0/plot_m0_n0_v.eps&
+  233  idl
+  234  vim compare.pro 
+  235  cp compare.pro /ricercatori/ft/specyl/veranda/flow/pro/compare.pro
+  236  cd ..
+  237  llt *pro
+  238  vim variaQ.pro 
+  239  cd ..
+  240  ls
+  241  cd h7/
+  242  ll
+  243  cd s300m30_momsour0/
+  244  ll
+  245  flwshw 
+  246  cd ..
+  247  cd s300m30_momsour2e-3/
+  248  flwshw 
+  249  cd ..
+  250  ll
+  251  cd variaQ_en.pro 
+  252  vim variaQ_en.pro 
+  253  llt
+  254  meld s300m30_momsour4e-3/for/1/cyl1.inc.for spare/for/1/cyl1.inc.for
+  255  cp -r spare/ s300m30_momsour6e-3
+  256  cd s300m30_momsour6e-3/
+  257  vim for/1/cyl1.inc.for
+  258  meld for/1/cyl1.inc.for ../s300m30_momsour4e-3/for/1/cyl1.inc.for
+  259  meld for/2/cyl1.inc.for ../s300m30_momsour4e-3/for/2/cyl1.inc.for
+  260  llt ../s300m30_momsour4e-3/
+  261  llt ../s300m30_momsour4e-3/dat/
+  262  vim settings.inc.mk 
+  263  llt 
+  264  llt dat/
+  265  meld for/1/cyl1.inc.for /ricercatori/ft/specyl/veranda/flow/for/example_cyl1.for 
+  266  meld for/1/cyl1.inc.for for/2/cyl1.inc.for 
+  267  vim for/1/cyl1.inc.for
+  268  meld for/1/cyl1.inc.for /ricercatori/ft/specyl/veranda/flow/for/example_cyl1.for 
+  269  meld for/1/cyl1.inc.for for/2/cyl1.inc.for 
+  270  cd ..
+  271  rm -fr spare/
+  272  cp -r s300m30_momsour6e-3/ spare
+  273  cd s300m30_momsour6e-3/
+  274  exit
+  275  flw
+  276  gvim pro/compare.pro 
+  277  qstat
+  278  make -f makefile SIM=archive/rfp/2d/theta16/momsour/h10/s300m30_momsour0/ all_touch
+  279  make -f makefile SIM=archive/rfp/2d/theta16/momsour/h10/s300m30_momsour0/ sc_outputs -n | grep pgf
+  280  make -f makefile SIM=archive/rfp/2d/theta16/momsour/h10/s300m30_momsour0/ sc_outputs -n | grep pgf
+  281  make -f makefile SIM=archive/rfp/2d/theta16/momsour/h10/s300m30_momsour0/ sc_outputs 
+  282  sq
+  283  qstat
+  284  c
+  285  exit
+  286  flw
+  287  make -f makefile SIM=archive/rfp/3d/theta16/varioMP/vario/ begin
+  288  make -f makefile SIM=archive/rfp/3d/theta16/varioMP/vario/ i_plot
+  289  c
+  290  make -f makefile SIM=archive/rfp/3d/theta16/varioMP/vario/ begin
+  291  make -f makefile SIM=archive/rfp/3d/theta16/varioMP/vario/ i_plot
+  292  c
+  293  c
+  294  make -f makefile SIM=archive/rfp/3d/theta16/varioMP/vario/ begin
+  295  c
+  296  make -f makefile SIM=archive/rfp/3d/theta16/varioMP/vario/ sc_outputs -n | grep pgf
+  297  make -f makefile SIM=archive/rfp/3d/theta16/varioMP/vario/ sc_outputs 
+  298  sq
+  299  c
+  300  make -f makefile SIM=archive/rfp/3d/theta16/varioMP/vario/ sc_outputs 
+  301  sq
+  302  c
+  303  sq
+  304  make -f makefile SIM=archive/rfp/3d/theta16/varioMP/vario/ begin
+  305  make -f makefile SIM=archive/rfp/3d/theta16/varioMP/vario/ i_plot
+  306  c
+  307  make -f makefile SIM=archive/rfp/3d/theta16/varioMP/vario/ i_plot2
+  308  c
+  309  exit
+  310  flw
+  311  ls
+  312  cd archive/
+  313  ll
+  314  cd rfp/
+  315  l
+  316  ll
+  317  cd 3d/ù
+  318  cd 3d/
+  319  llt
+  320  cd theta16/
+  321  llt
+  322  cd s1000m100
+  323  ll
+  324  cd ..
+  325  cd varioMP/
+  326  ll
+  327  cd varioMP
+  328  flwshw 
+  329  cd ..
+  330  du -h 
+  331  llt spare/
+  332  llt spare/for/
+  333  meld spare/for/1/cyl1.inc.for varioMP/for/1/cyl1.inc.for 
+  334  cp -r spare/ vario_nmp
+  335  cd vario_nmp/
+  336  vim for/1/cyl1.inc.for 
+  337  vim for/2/cyl1.inc.for 
+  338  vim for/1/cyl1.inc.for 
+  339  vim for/2/cyl1.inc.for 
+  340  ll
+  341  llt da
+  342  llllt d
+  343  llt dat/
+  344  llt log/
+  345  cd ..
+  346  mv vario_nmp/ vario
+  347  vim spare/
+  348  vim vario/settings.inc.mk 
+  349  cd vario
+  350  vim for/1/cyl1.inc.for 
+  351  meld for/1/cyl1.inc.for  for/2/cyl1.inc.for 
+  352  sq
+  353  c
+  354  llt dat/
+  355  llt log/
+  356  vim for/settings.blc.for 
+  357  flwshw 
+  358  .
+  359  c
+  360  tail log/vario_201701161636.log 
+  361  tail log/vario_201701161636.log 
+  362  flwshw 
+  363  tail log/vario_201701161636.log 
+  364  c
+  365  llt
+  366  llt log/
+  367  llt dat/
+  368  flwshw 
+  369  ggv dat/edgeb.eps&
+  370  ggv dat/imf_bprof.eps&
+  371  c
+  372  vim for/1/cyl1.inc.for 
+  373  sq
+  374  qdel 88945+
+  375  qdel 88945
+  376  qs
+  377  sq
+  378  vim for/1/cyl1.inc.for 
+  379  vim for/2/cyl1.inc.for 
+  380  vim settings.inc.mk 
+  381  vim for/1/cyl1.inc.for 
+  382  vim settings.inc.mk 
+  383  llt log/
+  384  rm -f log/vario_201701161636.*
+  385  rm -f log/vario_201701191014.*
+  386  llt log/
+  387  c
+  388  llt dat/
+  389  llt log/
+  390  cat log/vario_201701191051.log 
+  391  c
+  392  llt log/
+  393  llt dat/
+  394  llt log/
+  395  cat log/vario_201701191051.log 
+  396  cat log/vario_201701191051.log | grep ITP
+  397  vim for/settings.blc.for 
+  398  flwshw 
+  399  cat log/vario_201701191051.log | grep ITP
+  400  ls
+  401  c
+  402  c
+  403  llt dat/
+  404  llt dat/
+  405  llt log/
+  406  cat log/vario_201701191051.log 
+  407  vim for/settings.blc.for 
+  408  flwshw 
+  409  c
+  410  llt dat/
+  411  llt log/
+  412  cat log/vario_201701191051.log 
+  413  c
+  414  exit
+  415  idl
+  416  llt
+  417  idl
+  418  llt
+  419  idl
+  420  c
+  421  top
+  422  topu
+  423  c
+  424  idl
+  425  c
+  426  ls
+  427  idl
+  428  exit
+  429  cd ..
+  430  cd digiannatale/
+  431  ll
+  432  vim readborg.v2.pro 
+  433  cp ../dati_prova_rubino/helios_exp_lyap.v2.pro .
+  434  vim helios_exp_lyap.v2.pro 
+  435  exit
+  436  llt *sav
+  437  idl
+  438  ls
+  439  cp ~/idl/ridges/readborg.v2.pro .
+  440  idl
+  441  cd ..
+  442  mkdir digiannatale
+  443  cp dati_prova_rubino/borgz_poinc256x2048.bin_proc* digiannatale/
+  444  cp dati_prova_rubino/readborg.v2.pro digiannatale/
+  445  c
+  446  exit
+  447  ssh ra25
+  448  vim .bashrc
+  449  exit
+  450  vim .bashrc
+  451  gedit .bashrc
+  452  source .bashrc
+  453  ls
+  454  vim
+  455  cd bin
+  456  ls
+  457  ls terminator-0.97
+  458  ll
+  459  cd terminator-0.97/
+  460  ls
+  461  cat README 
+  462  gedit README 
+  463  gedit INSTALL 
+  464  exit
+  465  ls
+  466  vim zhirui_lower_q.dat 
+  467  exit
+  468  vim zhirui_lower_q.dat 
+  469  terminator&
+  470  vim .bashrc
+  471  gedit .bashrc
+  472  ls /usr/lib64/perl5/
+  473  ls /usr/lib64/perl5/CORE/
+  474  gedit .bashrc &
+  475  source .bashrc 
+  476  vim .bashrc
+  477  echo $LD_LIBRARY_PATH 
+  478  echo $LD_LIBRARY_PATH | grep CORE
+  479  echo $LD_LIBRARY_PATH | grep perl
+  480  gedit .bashrc &
+  481  gedit .bash_profile
+  482  source .bashrc 
+  483  echo $LD_LIBRARY_PATH | grep perl
+  484  echo $LD_LIBRARY_PATH 
+  485  gedit .bashrc
+  486  bg
+  487  source .bashrc 
+  488  echo $LD_LIBRARY_PATH 
+  489  echo $LD_LIBRARY_PATH | grep perl
+  490  source .bashrc 
+  491  echo $LD_LIBRARY_PATH | grep perl
+  492  vim aaa_last_working.txt 
+  493  llt /usr/lib64/python2.7/
+  494  source .bashrc 
+  495  vim aaa_last_working.txt 
+  496  echo $LD_LIBRARY_PATH | grep pyt
+  497  llt /usr/lib64
+  498  vim --version
+  499  find /usr/lib/* -name "libpython2.4*"
+  500  find -r /usr/lib/* -name "libpython2.4*"
+  501  find /usr/lib/* -name "libpython2.4*"
+  502  find /usr/lib* -name "libpython2.4*"
+  503  vim
+  504  reset
+  505  vim
+  506  exit
+  507  vim
+  508  exit
+  509  vim
+  510  which vim
+  511  exit
+  512  which vim
+  513  cat .bashrc
+  514  python
+  515  cat .bashprofile
+  516  cat .bashrc
+  517  ls -al | grep prof
+  518  less .bash_profile
+  519  which vim
+  520  exit
+  521  gedit .bashrc
+  522  gedit .bash_profile
+  523  which vim
+  524  gedit .bash_profile
+  525  gedit .bashrc
+  526  bg
+  527  llt bin/vim
+  528  ./bin/vim
+  529  which vim
+  530  llt /bin/vim
+  531  /bin/vim
+  532  source .bashrc 
+  533  which vim
+  534  echo $PATH 
+  535  echo $PATH | grep vim
+  536  gedit .bash_profile &
+  537  source .bashrc 
+  538  source .bash_profile
+  539  which vim
+  540  reset
+  541  which vim
+  542  source .bash_profile
+  543  echo $PATH 
+  544  echo $PATH | grep veranda
+  545  echo $HOSTNAME 
+  546  source .bash_profile
+  547  source .bashrc
+  548  echo $PATH | grep veranda
+  549  export PATH=
+  550  echo $PATH | grep veranda
+  551  echo $PATH 
+  552  source .bashrc
+  553  exit
+  554  echo $PATH 
+  555  which vim
+  556  echo $PATH | grep veranda
+  557  source .bashrc
+  558  echo $PATH | grep veranda
+  559  exit
+  560  echo $PATH
+  561  echo $PATH | grep veranda
+  562  exit
+  563  echo $PATH | grep veranda
+  564  exit
+  565  echo $PATH | grep veranda
+  566  source .bash_profile
+  567  exit
+  568  echo $PATH | grep veranda
+  569  source .bashrc
+  570  exit
+  571  echo $PATH | grep veranda
+  572  echo $PATh
+  573  echo $PATH |
+  574  source .bash_profile
+  575  exit
+  576  gedit ~/.bashrc
+  577  source .bashrc
+  578  idl
+  579  exit
+  580  which vim
+  581  vim
+  582  exit
+  583  echo $IDL_DIR 
+  584  echo $IDL_STARTUP 
+  585  cat .idl_startup.
+  586  cat .idl_startup.pro 
+  587  c
+  588  which idl
+  589  idl
+  590  vim .bashrc
+  591  source .bashrc
+  592  source .bash_profile
+  593  vim .bash_profile
+  594  source .bash_profile
+  595  cd `
+  596  cd ~
+  597  ls .config/
+  598  vim .config/terminator/
+  599  vim .config/terminator/config
+  600  exit
+  601  cd paradigm/dat/itp/60/borgogno/digiannatale/
+  602  ll
+  603  vim helios_exp_lyap.v2.pro 
+  604  exit
+  605  idl
+  606  which idl
+  607  llt /usr/local/bin/idl 
+  608  idl
+  609  echo $IDL_PATH 
+  610  idl
+  611  /usr/local/itt/idl82
+  612  /usr/local/exelis/idl85
+  613  /usr/local/exelis/idl85/bin/idl
+  614  ls
+  615  /usr/local/exelis/bin
+  616  llt /usr/local/exelis/bin
+  617  llt /usr/local/exelis/
+  618  llt /usr/local/exelis/idl
+  619  idl85
+  620  which idl85
+  621  which idl
+  622  /usr/local/bin/idl
+  623  llt usr/local/bin/idl
+  624  llt usr/local/bin/
+  625  llt  /usr/local/bin/
+  626  exit
+  627  which idl
+  628  idl
+  629  ll /usr/local/bin/idl
+  630  alias | grep idl
+  631  /usr/local/exelis/idl/bin/idl
+  632  bash -x /usr/local/exelis/idl/bin/idl
+  633  cat /usr/local/exelis/idl/bin/idl
+  634  bash -x /usr/local/exelis/idl/bin/idl
+  635  export PATH=/home/veranda/bin/texlive/bin/x86_64-linux:/usr/local/Pfortran/bin:/usr/local/Pfortran/mpi/openmpi-1.10.2:/usr/local/Ifortran:/usr/local/intel/impi/:/usr/local/intel/bin:/usr/local/intel/advisor_xe_2015.1.10.380555/bin64:/usr/local/intel/vtune_amplifier_xe_2015.1.1.380310/bin64:/usr/local/intel/inspector_xe_2015.1.2.379161/bin64:/usr/local/intel//impi/5.0.2.044/intel64/bin:/usr/local/intel//itac/9.0.2.045/intel64/bin:/usr/local/intel/composer_xe_2015.1.133/bin/intel64:/usr/local/intel/composer_xe_2015.1.133/debugger/gdb/intel64_mic/bin:/usr/lib64/qt-3.3/bin:/usr/local/mdsplus/bin64:/bin:/jre/javaws:/usr/local/valgrind/bin:/home/mdsplus/scripts:/usr/local/rfx/data_acquisition/scripts/rfxVersioning:/usr/local/bin:/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/usr/local/toolworks/totalview.2016.07.22/bin:/usr/local/rfxlibs/bin64:/usr/local/mdsplus/bin:/opt/pbs/bin
+  636  idl
+  637  bash -x /usr/local/exelis/idl/bin/idl
+  638  . /usr/local/exelis/idl/bin/idl
+  639  export PATH=/home/veranda/bin/texlive/bin/x86nda/bin/texlive/bin/x86_64-linux:/usr/local/Pfortran/bin:/usr/local/Pfortran/mpi/openmpi-1.10.2:/usr/local/Ifortran:/usr/local/intel/impi/:/usr/local/intel/bin:/usr/local/intel/advisor_xe_2015.1.10.380555/bin64:/usr/local/intel/vtune_amplifier_xe_2015.1.1.380310/bin64:/usr/local/intel/inspector_xe_2015.1.2.379161/bin64:/usr/local/intel//impi/5.0.2.044/intel64/bin:/usr/local/intel//itac/9.0.2.045/intel64/bin:/usr/local/intel/composer_xe_2015.1.133/bin/intel64:/usr/local/intel/composer_xe_2015.1.133/debugger/gdb/intel64_mic/bin:/usr/lib64/qt-3.3/bin:/usr/local/mdsplus/bin64:/bin:/jre/javaws:/usr/local/valgrind/bin:/home/mdsplus/scripts:/usr/local/rfx/data_acquisition/scripts/rfxVersioning:/usr/local/bin:/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/usr/local/toolworks/totalview.2016.07.22/bin:/usr/local/rfxlibs/bin64:/usr/local/mdsplus/bin:/opt/pbs/bin
+  640  idl
+  641  export PATH=/home/veranda/bin/texlive/bin/x86_64-linux:/usr/local/Pfortran/bin:/usr/local/Pfortran/mpi/openmpi-1.10.2:/usr/local/Ifortran:/usr/local/intel/impi/:/usr/local/intel/bin:/usr/local/intel/advisor_xe_2015.1.10.380555/bin64:/usr/local/intel/vtune_amplifier_xe_2015.1.1.380310/bin64:/usr/local/intel/inspector_xe_2015.1.2.379161/bin64:/usr/local/intel//impi/5.0.2.044/intel64/bin:/usr/local/intel//itac/9.0.2.045/intel64/bin:/usr/local/intel/composer_xe_2015.1.133/bin/intel64:/usr/local/intel/composer_xe_2015.1.133/debugger/gdb/intel64_mic/bin:/usr/lib64/qt-3.3/bin:/usr/local/mdsplus/bin64:/bin:/jre/javaws:/usr/local/valgrind/bin:/home/mdsplus/scripts:/usr/local/rfx/data_acquisition/scripts/rfxVersioning:/usr/local/bin:/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/usr/local/toolworks/totalview.2016.07.22/bin:/usr/local/rfxlibs/bin64:/usr/local/mdsplus/bin:/opt/pbs/bin
+  642  source idl
+  643  echo $PATH
+  644  echo $PATH | less
+  645  grep PATH /usr/local/exelis/idl/bin/idl
+  646  echo $IDL_DIR
+  647  grep IDL_DIR .bashrc
+  648  grep ~/bin .bashrc
+  649  grep "~/bin" .bashrc
+  650  grep "~/bin" .profile
+  651  grep "~/bin" .bash_profile
+  652  echo $PATH
+  653  vim
+  654  exit
+  655  echo $IDL_PATH 
+  656  idl
+  657  /usr/local/bin/idl
+  658  llt
+  659  cat bash.dat 
+  660  c
+  661  ls
+  662  cp .bashrc .bashrc_24012017
+  663  cp .bash_profile .bash_profile_24012017
+  664  gedit .bashrc
+  665  gedit .bash_profile
+  666  source .bash_profile
+  667  source .bashrc
+  668  exit
+  669  idl
+  670  echo $IDL_DIR 
+  671  exit
+  672  which idl
+  673  echo $IDL_DIR 
+  674  exit
+  675  echo $IDL_DIR 
+  676  export IDL_DIE=
+  677  export IDL_DIR=
+  678  echo $IDL_DIR 
+  679  idl
+  680  source .bashrc
+  681  echo $IDL_DIR 
+  682  idl
+  683  exit
+  684  vim .bashrc
+  685  :q
+  686  exit
+  687  idl
+  688  topu
+  689  c
+  690  exit
+  691  cd paradigm/dat/itp/60/borgogno/digiannatale/
+  692  vim helios_exp_lyap.v2.pro 
+  693  exit
+  694  cd ..
+  695  ls dati_prova_rubino/
+  696  exit
+  697  ls
+  698  exit
+  699  top
+  700  exit
+  701  flw
+  702  make -f makefile SIM=archive/rfp/2d/theta16/momsour/h10/s300m30_momsour0/ begin 3D=0
+  703  make -f makefile SIM=archive/rfp/2d/theta16/momsour/h10/s300m30_momsour0/ 3D=0 i_plot
+  704  exit
+  705  flw
+  706  llt
+  707  cd archive/rfp/2d/theta16/momsour/h10/
+  708  ls
+  709  llt
+  710  cd s300m30_momsour0
+  711  llt dat/
+  712  llt log/
+  713  sq
+  714  cat log/s300m30_momsour0_201701240958.log 
+  715  vim for/settings.blc.for 
+  716  flws
+  717  llt ~/bin/flwshw 
+  718  ~/bin/flwshw 
+  719  ./~/bin/flwshw 
+  720  .~/bin/flwshw 
+  721  /home/veranda/bin/flwshw 
+  722  /home/veranda/bin/showflow.sh .sh 
+  723  ./home/veranda/bin/showflow.sh 
+  724  llt ~/.bashrc*
+  725  mv ~/.bashrc .bashrcrat2
+  726  mv ~/.bashrc ~/.bashrcrat2
+  727  mv .bashrcrat2 ~/
+  728  mv ~/.bash_profile ~/.bash_profile_rat2
+  729  mv ~/.bashrc_24012017 ~/.bashrc
+  730  mv ~/.bash_profile_24012017 ~/.bash_profile
+  731  source ~/.bashrc
+  732  source ~/.bash_profile
+  733  flwshw
+  734  echo $PATH 
+  735  gvim ~/.bashrc
+  736  source ~/.bashrc
+  737  source ~/.bash_profile
+  738  echo $PATH
+  739  source ~/.bashrc
+  740  echo $PATH
+  741  echo $PATH | grep veranda
+  742  source ~/.bashrc
+  743  source ~/.bashrc
+  744  source ~/.bashrc
+  745  flwshw 
+  746  flwshw 
+  747  ggv
+  748  ggv dat/imf_bprof.eps&
+  749  source  ~/.bashrc
+  750  flwshw 
+  751  exit
+  752  cd ~/bin
+  753  llt flwshw 
+  754  echo $PATH
+  755  cd ..
+  756  vim .bashrc
+  757  source .bashrc
+  758  echo $PATH 
+  759  gvim .bashls
+  760  cd in_corso/prln6/
+  761  ls
+  762  cd tex/
+  763  ls
+  764  cd resubmission/
+  765  ll
+  766  ssh rat2.rfx.local
+  767  exit
+  768  top
+  769  llt
+  770  top
+  771  llt
+  772  gvim .bashrc
+  773  exit
+  774  gvim .bashrc
+  775  exit
+  776  llt
+  777  sq
+  778  exit
+  779  flw
+  780  vim for/specyl.for 
+  781  ls
+  782  make -f makefile SIM=archive/rfp/3d/theta16/varioMP/vario/ begin
+  783  exit
+  784  exit
+  785  flw
+  786  make -f makefile SIM=archive/rfp/3d/theta16/varioMP/vario/ begin
+  787  exit
+  788  xeit
+  789  exit
+  790  ll
+  791  sq
+  792  flw
+  793  cd archive/rfp/3d/theta16/s1000m100
+  794  ll
+  795  cd ..
+  796  ls
+  797  cd varioMP/
+  798  llt
+  799  cd vario
+  800  ll
+  801  llt dat/
+  802  llt l
+  803  llt log/
+  804  cat log/vario_201701191051.log 
+  805  vim for/settings.blc.for 
+  806  gvim ~/.bashrc
+  807  reset
+  808  exit
+  809  cd paradigm/dat/itp/60/borgogno/digiannatale/
+  810  ls
+  811  llt
+  812  vim prova.pro 
+  813  exit
+  814  exit
+  815  idl
+  816  cd paradigm/dat/itp/60/borgogno/digiannatale/
+  817  idl
+  818  exit
+  819  exit
+  820  ls
+  821  top
+  822  who
+  823  ls
+  824  c
+  825  l
+  826  cp .bashrc .bashrc.20170226
+  827  exit
+  828  ls .bashrc
+  829  ls .bashrc*
+  830  mv .bashrc.20170226 .bashrc.20170126 
+  831  cp .bash_profile .bash_profile.20170126
+  832  gvim .bashrc
+  833  exit
+  834  ls
+  835  exit
+  836  llt
+  837  ls -lth
+  838  exit
+  839  llt
+  840  ls -ls
+  841  meld .bashrc .bashrcold 
+  842  meld .bashrc .bashrc.20170126 
+  843  exit
+  844  ls
+  845  idl
+  846  vim
+  847  gvim
+  848  meld .bashrc .bashrc.20170126 
+  849  gvim
+  850  exit
+  851  llt
+  852  exit
+  853  gvim
+  854  ll
+  855  paraview &
+  856  vim .config/terminator/config
+  857  exit
+  858  vim .config/terminator/config
+  859  exit
+  860  l
+  861  ls
+  862  cd bin
+  863  ls
+  864  ls xdraw
+  865  cd ..
+  866  ls
+  867  vim .idl_startup.pro 
+  868  echo $IDL_STARTUP
+  869  exit
+  870  idl
+  871  source ~/.bashrc
+  872  meld .bashrc .bashrc.20170126 
+  873  vim .bashrc
+  874  exit
+  875  exit
+  876  cd ..
+  877  ls
+  878  ls
+  879  echo $IDL_STARTUP 
+  880  idl
+  881  exit
+  882  gvim .bashrc
+  883  exit
+  884  flw
+  885  make -f makefile SIM=archive/rfp/3d/theta16/varioMP/vario/ i_plot
+  886  source ~/.bashrc
+  887  gvim
+  888  c
+  889  qstat
+  890  sq
+  891  flw
+  892  cd archive/rfp/3d/theta16/varioMP/
+  893  ll
+  894  cd varioMP
+  895  cd ..
+  896  cd vario
+  897  llt dat/
+  898  echo $PATH
+  899  source ~/.bashrc
+  900  exit
+  901  llt
+  902  ls
+  903  vim .config/terminator/config
+  904  c
+  905  ls
+  906  cd paradigm/dat/itp/60/borgogno/digiannatale/
+  907  ll
+  908  vim helios_exp_lyap.v2.pro 
+  909  c
+  910  exit
+  911  flwshw 
+  912  ggv
+  913  gv dat/imf_bprof.eps &
+  914  c
+  915  exit
+  916  echo $PATH 
+  917  exitr
+  918  exit
+  919  cd ~bin
+  920  ls
+  921  cd ~/bin
+  922  ls
+  923  llt vim
+  924  rm -f bim
+  925  rm -f vim
+  926  ls
+  927  which vim
+  928  exit
+  929  sq
+  930  ls
+  931  cd paradigm/dat/itp/60/borgogno/digiannatale/
+  932  llt
+  933  vim helios_exp_lyap.v2.pro 
+  934  vim
+  935  which vim
+  936  vim
+  937  exit
+  938  flw
+  939  cd archive/rfp/3d/theta16/
+  940  ls
+  941  cd varioMP/
+  942  l
+  943  ll
+  944  cd vario
+  945  llt dat/
+  946  cat log/vario_201701191051.log 
+  947  ls
+  948  c
+  949  c
+  950  qstat
+  951  exit
+  952  ssh ra22
+  953  exit
+  954  idl
+  955  exit
+  956  cd /scratch/veranda/
+  957  ls
+  958  cd giovanni/
+  959  ll
+  960  vim speranza.pro 
+  961  llt
+  962  vim speranza.pro 
+  963  cp ~/paradigm/dat/itp/60/borgogno/dati_prova_rubino/borgz_poinc256x2048.bin_proc0 .
+  964  vim speranza.pro 
+  965  c
+  966  exit
+  967  llt
+  968  for i in `ls -d mp3e-3_mom*/dat/`; do echo $i; done
+  969  for i in `ls -d mp3e-3_mom*/dat/`; do llt $i/*sav; done
+  970  llt mp3e-3_momsour5e-3/dat/
+  971  cd ..
+  972  for i in `ls -d mp3e-3_mom*/dat/`; do echo $i; done
+  973  ll
+  974  cd s300m30/
+  975  for i in `ls -d mp3e-3_mom*/dat/`; do echo $i; done
+  976  llt mp3e-3_momsour0/dat/
+  977  ggv mp3e-3_momsour0/dat/mag_en.eps &
+  978  gv mp3e-3_momsour0/dat/mag_en.eps &
+  979  for i in `ls -d mp3e-3_mom*/dat/`; do echo $i; done
+  980  cd mp3e-3_momsour0/dat/
+  981  llt *sav
+  982  idl
+  983  cd ..
+  984  ls
+  985  idl
+  986  exit
+  987  idl
+  988  exit
+  989  cd archive/rfp/2d/theta16/momsour/h10/
+  990  ls
+  991  cd s300m30_momsour2e-3/
+  992  ll
+  993  llt
+  994  ggv compare_rfp2dtheta16momsourh10s300m30_momsour2e-3-rfp2dtheta16momsourh10s300m30_momsour2e-3.eps 
+  995  gv compare_rfp2dtheta16momsourh10s300m30_momsour2e-3-rfp2dtheta16momsourh10s300m30_momsour2e-3.eps 
+  996  topu
+  997  exit
+  998  flw
+  999  make -f makefile SIM=
+ 1000  complete -p
+ 1001  complete -p | less
+ 1002  make -f makefile SIM=archive/rfp/2d/theta16/momsour/mp/h10/s300m30/mp3e-2_momsour0/ 3D=0 begin
+ 1003  make -f makefile SIM=archive/rfp/2d/theta16/momsour/mp/h10/s300m30/mp3e-2_momsour0/ 3D=0 i_energy
+ 1004  gvim pro/find_nsectionsdat.pro 
+ 1005  make -f makefile SIM=archive/rfp/2d/theta16/momsour/mp/h10/s300m30/mp3e-2_momsour0/ 3D=0 i_energy
+ 1006  make -f makefile SIM=archive/rfp/2d/theta16/momsour/mp/h10/s300m30/mp3e-2_momsour0/ 3D=0 prova
+ 1007  make -f makefile SIM=archive/rfp/2d/theta16/momsour/mp/h10/s300m30/mp3e-2_momsour0/ 3D=0 i_energy
+ 1008  make -f makefile SIM=archive/rfp/2d/theta16/momsour/mp/h10/s300m30/mp3e-2_momsour0/ 3D=0 rpova
+ 1009  make -f makefile SIM=archive/rfp/2d/theta16/momsour/mp/h10/s300m30/mp3e-2_momsour0/ 3D=0 prova
+ 1010  make -f makefile SIM=archive/rfp/2d/theta16/momsour/mp/h10/s300m30/mp3e-2_momsour0/ 3D=0 i_energy
+ 1011  make -f makefile SIM=archive/rfp/2d/theta16/momsour/mp/h10/s300m30/mp3e-2_momsour0/ 3D=0 prova
+ 1012  make -f makefile SIM=archive/rfp/2d/theta16/momsour/mp/h10/s300m30/mp3e-2_momsour0/ 3D=0 i_energy
+ 1013  make -f makefile SIM=archive/rfp/2d/theta16/momsour/mp/h10/s300m30/mp3e-2_momsour5e-3/ 3D=0 i_energy
+ 1014  make -f makefile SIM=archive/rfp/2d/theta16/momsour/mp/h10/s300m30/mp3e-2_momsour2e-3/ 3D=0 i_energy
+ 1015  make -f makefile SIM=archive/rfp/2d/theta16/momsour/mp/h10/s300m30/mp3e-2_momsour1e-2/ 3D=0 i_energy
+ 1016  make -f makefile SIM=archive/rfp/2d/theta16/momsour/mp/h10/s300m30/mp3e-2_momsour2e-2/ 3D=0 i_energy
+ 1017  make -f makefile SIM=archive/rfp/2d/theta16/momsour/mp/h10/s300m30/mp3e-2_momsour3e-2/ 3D=0 i_energy
+ 1018  make -f makefile SIM=archive/rfp/2d/theta16/momsour/mp/h10/s300m30/mp3e-2_momsour5e-3/ 3D=0 i_enb
+ 1019  make -f makefile SIM=archive/rfp/2d/theta16/momsour/mp/h10/s300m30/mp3e-2_momsour1e-2/ 3D=0 i_enb
+ 1020  make -f makefile SIM=archive/rfp/2d/theta16/momsour/mp/h10/s300m30/mp3e-2_momsour1e-2/ sc_outputs -n | grep pgf
+ 1021  make -f makefile SIM=archive/rfp/2d/theta16/momsour/mp/h10/s300m30/mp3e-2_momsour1e-2/ sc_outputs 
+ 1022  pgf
+ 1023  llt /usr/bin/gfortran 
+ 1024  which gfortran
+ 1025  which pgf955
+ 1026  which pgf95
+ 1027  make -f makefile SIM=archive/rfp/2d/theta16/momsour/mp/h10/s300m30/mp3e-2_momsour1e-2/ sc_outputs -n | grep pgf
+ 1028  make -f makefile SIM=archive/rfp/2d/theta16/momsour/mp/h10/s300m30/mp3e-2_momsour1e-2/ sc_outputs -n | grep gfo
+ 1029  make -f makefile SIM=archive/rfp/2d/theta16/momsour/mp/h10/s300m30/mp3e-2_momsour1e-2/ sc_outputs 
+ 1030  ls for/
+ 1031  make -f makefile SIM=archive/rfp/2d/theta16/momsour/mp/h10/s300m30/mp3e-2_momsour1e-2/ sc_outputs 
+ 1032  LS
+ 1033  ls
+ 1034  cd for/
+ 1035  ls
+ 1036  cd ..
+ 1037  vim for/specyl.modulare.for 
+ 1038  gvim for/specyl.for 
+ 1039  llt
+ 1040  mv mp.for for/mp.for
+ 1041  make -f makefile SIM=archive/rfp/2d/theta16/momsour/mp/h10/s300m30/mp3e-2_momsour1e-2/ sc_outputs 
+ 1042  make -f makefile SIM=archive/rfp/2d/theta16/momsour/mp/h10/s300m30/mp3e-2_momsour1e-2/ prova
+ 1043  make -f makefile SIM=archive/rfp/2d/theta16/momsour/mp/h10/s300m30/mp3e-2_momsour1e-2/ sc_outputs 
+ 1044  make -f makefile SIM=archive/rfp/2d/theta16/momsour/mp/h10/s300m30/mp3e-2_momsour1e-2/ prova
+ 1045  llt for/mom_sour.
+ 1046  make -f makefile SIM=archive/rfp/2d/theta16/momsour/mp/h10/s300m30/mp3e-2_momsour1e-2/ prova
+ 1047  make -f makefile SIM=archive/rfp/2d/theta16/momsour/mp/h10/s300m30/mp3e-2_momsour1e-2/ sc_outputs 
+ 1048  c
+ 1049  make -f makefile SIM=archive/rfp/2d/theta16/momsour/mp/h10/s300m30/mp3e-2_momsour1e-2/ sc_outputs 
+ 1050* make -f Makefile modul
+ 1051  make -f Makefile SIM=archive/rfp/2d/theta16/momsour/mp/h10/s300m30/mp3e-2_momsour1e-2/ moduli
+ 1052  make -f Makefile SIM=archive/rfp/2d/theta16/momsour/mp/h10/s300m30/mp3e-2_momsour1e-2/ cp_moduli
+ 1053  gvim makefile
+ 1054  make -f Makefile SIM=archive/rfp/2d/theta16/momsour/mp/h10/s300m30/mp3e-2_momsour1e-2/ cp_moduli
+ 1055  llt for/
+ 1056  ls
+ 1057  mkdir safe_version
+ 1058  cp for/specyl.for safe_version/
+ 1059  cp for/mp.for safe_version/
+ 1060  cp for/mom_sour.for safe_version/
+ 1061  llt safe_version/
+ 1062  make -f Makefile SIM=archive/rfp/2d/theta16/momsour/mp/h10/s300m30/mp3e-2_momsour1e-2/ cp_moduli
+ 1063  llt safe_version/
+ 1064  make -f Makefile SIM=archive/rfp/2d/theta16/momsour/mp/h10/s300m30/mp3e-2_momsour1e-2/ cp_moduli
+ 1065  make -f Makefile SIM=archive/rfp/2d/theta16/momsour/mp/h10/s300m30/mp3e-2_momsour1e-2/ cp_moduli | grep ciao
+ 1066  make -f Makefile SIM=archive/rfp/2d/theta16/momsour/mp/h10/s300m30/mp3e-2_momsour1e-2/ cp_moduli | grep cp
+ 1067  mkdir for/modules
+ 1068  cp for/mp.for for/modules/
+ 1069  cp for/mom_sour.for for/modules/
+ 1070  make -f Makefile SIM=archive/rfp/2d/theta16/momsour/mp/h10/s300m30/mp3e-2_momsour1e-2/ prova
+ 1071  llt ì
+ 1072  llt ~
+ 1073  make -f Makefile SIM=archive/rfp/2d/theta16/momsour/mp/h10/s300m30/mp3e-2_momsour1e-2/ prova
+ 1074  make -f Makefile SIM=archive/rfp/2d/theta16/momsour/mp/h10/s300m30/mp3e-2_momsour1e-2/ prova | grep cp
+ 1075  make -f Makefile SIM=archive/rfp/2d/theta16/momsour/mp/h10/s300m30/mp3e-2_momsour1e-2/ prova 
+ 1076  make -f Makefile SIM=archive/rfp/2d/theta16/momsour/mp/h10/s300m30/mp3e-2_momsour1e-2/ prova0
+ 1077  make -f Makefile SIM=archive/rfp/2d/theta16/momsour/mp/h10/s300m30/mp3e-2_momsour1e-2/ all
+ 1078  top
+ 1079  ls
+ 1080  cd for/
+ 1081  ls
+ 1082  mkdir temp
+ 1083  cp specyl.for temp/
+ 1084  cp mp.for temp/
+ 1085  cp mom_sour.for temp/
+ 1086  cd temp/
+ 1087  ls
+ 1088  gfortran -fopenmp -I./ -I/ricercatori/ft/specyl/veranda/flow/archive/rfp/2d/theta16/momsour/mp/h10/s300m30/mp3e-2_momsour1e-2/for/1/ -o prova specyl.for 
+ 1089  gfortran -fopenmp -I./ -I/ricercatori/ft/specyl/veranda/flow/archive/rfp/2d/theta16/momsour/mp/h10/s300m30/mp3e-2_momsour1e-2/for/ -o prova specyl.for 
+ 1090  gfortran -fopenmp -I./ -I/ricercatori/ft/specyl/veranda/flow/archive/rfp/2d/theta16/momsour/mp/h10/s300m30/mp3e-2_momsour1e-2/for/ -I/ricercatori/ft/specyl/veranda/flow/archive/rfp/2d/theta16/momsour/mp/h10/s300m30/mp3e-2_momsour1e-2/for/1 -o prova specyl.for 
+ 1091  gfortran -c mp.for 
+ 1092  gfortran -c mp.for -I/ricercatori/ft/specyl/veranda/flow/archive/rfp/2d/theta16/momsour/mp/h10/s300m30/mp3e-2_momsour1e-2/for/1/
+ 1093  gfortran -c mom_sour.for -I/ricercatori/ft/specyl/veranda/flow/archive/rfp/2d/theta16/momsour/mp/h10/s300m30/mp3e-2_momsour1e-2/for/1/
+ 1094  llt
+ 1095  gfortran -c mom_sour.for -I/ricercatori/ft/specyl/veranda/flow/archive/rfp/2d/theta16/momsour/mp/h10/s300m30/mp3e-2_momsour1e-2/for/1/
+ 1096  gfortran -c mp.for -I/ricercatori/ft/specyl/veranda/flow/archive/rfp/2d/theta16/momsour/mp/h10/s300m30/mp3e-2_momsour1e-2/for/1/
+ 1097  gvim mp.for 
+ 1098  gfortran -c mp.for -I/ricercatori/ft/specyl/veranda/flow/archive/rfp/2d/theta16/momsour/mp/h10/s300m30/mp3e-2_momsour1e-2/for/1/
+ 1099  LLT
+ 1100  llt
+ 1101  gfortran -fopenmp mp.o mom_sour.o -I./ -I/ricercatori/ft/specyl/veranda/flow/archive/rfp/2d/theta16/momsour/mp/h10/s300m30/mp3e-2_momsour1e-2/for/ -I/ricercatori/ft/specyl/veranda/flow/archive/rfp/2d/theta16/momsour/mp/h10/s300m30/mp3e-2_momsour1e-2/for/1 -o prova specyl.for 
+ 1102  ls
+ 1103  cp /ricercatori/ft/specyl/veranda/flow/archive/rfp/2d/theta16/momsour/mp/h10/s300m30/mp3e-2_momsour1e-2/for/1/cyl1.inc.for .
+ 1104  gfortran -c cyl1.inc.for 
+ 1105  vim cyl1.inc.for 
+ 1106  rm -f cyl1.inc.for 
+ 1107  gfortran -fopenmp mp.o mom_sour.o -I/ricercatori/ft/specyl/veranda/flow/archive/rfp/2d/theta16/momsour/mp/h10/s300m30/mp3e-2_momsour1e-2/for/ -I/ricercatori/ft/specyl/veranda/flow/archive/rfp/2d/theta16/momsour/mp/h10/s300m30/mp3e-2_momsour1e-2/for/1 -o prova specyl.for 
+ 1108  cd ..
+ 1109  ll
+ 1110  ls 
+ 1111  ls *FOR
+ 1112  ls *for
+ 1113  vim specyl.modulare.for 
+ 1114  cd temp/
+ 1115  vim mp.for 
+ 1116  history 
+ 1117  history > hist
