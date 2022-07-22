@@ -155,7 +155,9 @@
         if (ios /= 0) then
          write(*,*) 'could not read namelist spc3.in'
          write(*,*) spc3file
-         stop
+        ! stop
+!#! Marco, not really needed
+         continue
   
         else
          close(nunitd)

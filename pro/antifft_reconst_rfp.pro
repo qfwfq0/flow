@@ -187,7 +187,9 @@ endelse
   for q = 0 , nsaved-1 do begin
   print,'time=',q,itp(q)
   spawn, 'mkdir -p '+path+'dat/itp/'+strtrim(string(itp(q),format='(i0)'))
-  outfile = path+'dat/itp/'+strtrim(string(itp(q),format='(i0)'))+'/antifft_'+str+'_'+strtrim(string(102,format='(i0)'))+'x'+strtrim(string(nth,format='(i0)'))+'myminmax'+strtrim(string(mymin,format='(i0)'))+strtrim(string(mymax,format='(i0)'))+'.sav'
+;  outfile = path+'dat/itp/'+strtrim(string(itp(q),format='(i0)'))+'/antifft_'+str+'_'+strtrim(string(102,format='(i0)'))+'x'+strtrim(string(nth,format='(i0)'))+'myminmax'+strtrim(string(mymin,format='(i0)'))+strtrim(string(mymax,format='(i0)'))+'.sav'
+;  outfile = path+'dat/itp/'+strtrim(string(itp(q),format='(i0)'))+'/antifft_'+str+'_'+strtrim(string(102,format='(i0)'))+'x'+strtrim(string(nth,format='(i0)'))+'myminmax'+strtrim(string(mymin,format='(i0)'))+strtrim(string(mymax,format='(i0)'))+'_pert.sav'
+  outfile = path+'dat/itp/'+strtrim(string(itp(q),format='(i0)'))+'/antifft_'+str+'_'+strtrim(string(nth,format='(i0)'))+'x'+strtrim(string(nzz,format='(i0)'))+'myminmax'+strtrim(string(mymin,format='(i0)'))+strtrim(string(mymax,format='(i0)'))+'_pert.sav'
 print,outfile
    print,'computing antifft of the '+str+' at time'+strtrim(string(pdt(itp(q)),format='(f11.4)'))+' time step'+strtrim(string(itp(q),format='(i0)'))
 
@@ -226,9 +228,12 @@ print,outfile
 ;        print,'aaa',im,in,jmn
 ;        endif
 ;#; mode selection
-;       if (im eq 0) then begin
+
+       if (im eq 0) then begin
+         if (in eq 0) then goto, jump
 ;         if (in ne 0) then goto, jump
-;        endif
+
+        endif
 ;        if (im eq 1) then begin
 ;         if ((in lt -25) or (in gt -3)) then goto, jump
 ;        endif

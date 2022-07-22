@@ -119,7 +119,8 @@ pro isave_jpar_j2, path, d3, nth, nzz, itp0, itp1, deltaitp, mymin, mymax
     for q = 0 , nsaved-1 do begin
      str='j'
      print,'q=',q
-     restore_jreconstruction = path+'dat/itp/'+strtrim(string(iitp(q),format='(i0)'))+'/antifft_'+str+'_'+strtrim(string(nth,format='(i0)'))+'x'+strtrim(string(nzz,format='(i0)'))+'myminmax'+strtrim(string(mymin,format='(i0)'))+strtrim(string(mymax,format='(i0)'))+'.sav'
+;     restore_jreconstruction = path+'dat/itp/'+strtrim(string(iitp(q),format='(i0)'))+'/antifft_'+str+'_'+strtrim(string(nth,format='(i0)'))+'x'+strtrim(string(nzz,format='(i0)'))+'myminmax'+strtrim(string(mymin,format='(i0)'))+strtrim(string(mymax,format='(i0)'))+'.sav'
+     restore_jreconstruction = path+'dat/itp/'+strtrim(string(iitp(q),format='(i0)'))+'/antifft_'+str+'_'+strtrim(string(nth,format='(i0)'))+'x'+strtrim(string(nzz,format='(i0)'))+'myminmax'+strtrim(string(mymin,format='(i0)'))+strtrim(string(mymax,format='(i0)'))+'_pert.sav'
      restore,restore_jreconstruction
      ;#; per prima cosa interpolo il campo jt sulla mesh x2
      nnjt = interpolate_x2_vec(reform(jt),path,d3) 
@@ -129,7 +130,8 @@ pro isave_jpar_j2, path, d3, nth, nzz, itp0, itp1, deltaitp, mymin, mymax
      njz[q,*,*,*] = nnjz
 
      str='b'
-     restore_breconstruction = path+'dat/itp/'+strtrim(string(iitp(q),format='(i0)'))+'/antifft_'+str+'_'+strtrim(string(nth,format='(i0)'))+'x'+strtrim(string(nzz,format='(i0)'))+'myminmax'+strtrim(string(mymin,format='(i0)'))+strtrim(string(mymax,format='(i0)'))+'.sav'
+;     restore_breconstruction = path+'dat/itp/'+strtrim(string(iitp(q),format='(i0)'))+'/antifft_'+str+'_'+strtrim(string(nth,format='(i0)'))+'x'+strtrim(string(nzz,format='(i0)'))+'myminmax'+strtrim(string(mymin,format='(i0)'))+strtrim(string(mymax,format='(i0)'))+'.sav'
+     restore_breconstruction = path+'dat/itp/'+strtrim(string(iitp(q),format='(i0)'))+'/antifft_'+str+'_'+strtrim(string(nth,format='(i0)'))+'x'+strtrim(string(nzz,format='(i0)'))+'myminmax'+strtrim(string(mymin,format='(i0)'))+strtrim(string(mymax,format='(i0)'))+'_pert.sav'
      restore,restore_breconstruction
      ;#; per prima cosa interpolo il campo br sulla mesh x2
      nnbr = interpolate_x2_vec(reform(br),path,d3) 

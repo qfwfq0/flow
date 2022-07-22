@@ -207,11 +207,6 @@ pro plot_etaj2, path, d3, tok, nth, nzz, itp0, itp1, hel, deltaitp, mymin, mymax
 
 endif else begin ;#; begin RFP part
 
-;#; create resistivity vector
-  eta_vec = make_array(n_elements(pror2),n_elements(rchi[0,*]),/double,value=0.d)
-  for q=0,n_elements(eta_vec[0,*])-1 do begin
-   eta_vec[*,q] = dissipation.eta*(1+dissipation.alet*pror2^(dissipation.beet))^dissipation.gaet
-  endfor
   print,'nsaved= ',nsaved
   print,'ITP',iitp
  
@@ -260,6 +255,11 @@ endif else begin ;#; begin RFP part
    phd_graphcloser,image_file
 
 
+;#; create resistivity vector
+  eta_vec = make_array(n_elements(pror2),n_elements(ajsq[0,*,0]),/double,value=0.d)
+  for iq=0,n_elements(eta_vec[0,*])-1 do begin
+   eta_vec[*,iq] = dissipation.eta*(1+dissipation.alet*pror2^(dissipation.beet))^dissipation.gaet
+  endfor
 ;   loadct,,,
    j2_file = path+'dat/itp/'+strtrim(string(iitp(q),'(i0)'))+'/etaj2_myminmax'+strtrim(string(mymin,format='(i0)'))+strtrim(string(mymax,format='(i0)'))+'.eps'
    phd_graphopener,filename=j2_file,xsize=12.,ysize=12.
@@ -306,11 +306,12 @@ endif else begin ;#; begin RFP part
 ;    endif
 ;    zmax=66
 
-;    qqzmax = max(ajpar,idx)
-;    qzmax=array_indices(ajpar,idx)
+    qqzmax = max(ajpar,idx)
+    qzmax=array_indices(ajpar,idx)
+    zmax = qzmax[2]
 ;    zmax=vecz(qzmax[2])/4.
 ;    contour,reform(ajpar[*,*,zmax]),pror2#cos(vecth),pror2#sin(vecth),xrange=xrange,yrange=yrange,xstyle=1,ystyle=1,nlev=25,title='z/R!D0!N='+strtrim(string(zmax,'(f7.3)')),xtitle='x/a',ytitle='y/a',/nodata,/iso,chars=1.7
-    zmax=203
+;    zmax=
     mxjpa=max(ajpar,idx)
     idjpa=array_indices(ajpar,idx)
     print,'ITP=',iitp(q),mxjpa,idjpa(2)
@@ -377,7 +378,9 @@ loadct,33,/silent
    phd_graphopener,filename=jparz_file,xsize=12.,ysize=12.
     xrange=[0.,1.]
     yrange = [0.,8.*!pi]
-    thmax=30
+    qqthmax = max(ajpar,idx)
+    qthmax=array_indices(ajpar,idx)
+    thmax = qthmax[1]
     contour,reform(ajpar[*,thmax,*]),pror2,vecz,xrange=xrange,yrange=yrange,xstyle=1,ystyle=1,nlev=25,title='J!Epar!N   h='+strtrim(string(hel,'(i0)'))+'  ITP='+strtrim(string(iitp(q)),'(i0)'),xtitle='x/a',ytitle='y/a',/nodata
     contour,reform(ajpar[*,thmax,*]),pror2,vecz,lev=levels,/fill,/overplot
     xyouts,0.6,0.96,/norm, 'my!Dmin!N='+strtrim(string(mymin,format='(i0)'))+' my!Dmax!N='+strtrim(string(mymax,format='(i0)')),chars=0.7
